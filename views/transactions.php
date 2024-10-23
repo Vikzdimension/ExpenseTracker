@@ -51,10 +51,24 @@
             <?php if(!empty($transactions)) : ?>
             <?php foreach($transactions as $transaction): ?>
             <tr>
-                <td><?= $transaction['date']; ?></td>
+                <td><?= formatDate($transaction['date']); ?></td>
                 <td><?= $transaction['checkNumber']; ?></td>
                 <td><?= $transaction['description']; ?></td>
-                <td><?= formatDollerAmount($transaction['amount']); ?></td>
+                <td>
+                    <?php if($transaction['amount'] < 0): ?>
+                        <span style="color:red;">
+                        <?= formatDollerAmount($transaction['amount']); ?>
+                        </span>
+                    <?php elseif($transaction['amount'] > 0): ?>
+                        <span style="color:green;">
+                        <?= formatDollerAmount($transaction['amount']); ?>
+                        </span>
+                    <?php else: ?>
+                        <span style="color:green;">
+                        <?= formatDollerAmount($transaction['amount']); ?>
+                        </span>
+                    <?php endif ?>                        
+                </td>                        
             </tr>
             <?php endforeach ?>
             <?php endif ?>
