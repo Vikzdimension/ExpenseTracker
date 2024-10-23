@@ -7,23 +7,22 @@ $root = dirname(__DIR__) . DIRECTORY_SEPARATOR;
 
 
 define('APP_PATH', $root. 'app'. DIRECTORY_SEPARATOR );
-
 define('FILES_PATH', $root. 'transactions_files'. DIRECTORY_SEPARATOR);
-define('VIEW_PATH', $root. 'views'. DIRECTORY_SEPARATOR);
+define('VIEWS_PATH', $root. 'views'. DIRECTORY_SEPARATOR);
 
 
 require APP_PATH. 'App.php';
-require APP_PATH. 'Helpers.php';
+// require APP_PATH. 'Helpers.php';
 
 
 $files = getTransactionFiles(FILES_PATH);
-
 $transactions = [];
 foreach($files as $file){
-    $transactions = array_merge($transactions, getTransactions($file));
+    $transactions = array_merge($transactions, getTransactions($file, 'extractTransaction'));
 }
 
-print_r($transactions);
-
+$totals = calculateTotals($transactions);
+// print_r(value: $transactions);
+require VIEWS_PATH . 'transactions.php';
 
 ?>
