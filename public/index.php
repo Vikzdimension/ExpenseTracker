@@ -12,7 +12,7 @@ define('VIEWS_PATH', $root. 'views'. DIRECTORY_SEPARATOR);
 
 
 require APP_PATH. 'App.php';
-// require APP_PATH. 'Helpers.php';
+require APP_PATH. 'Helpers.php';
 
 
 $files = getTransactionFiles(FILES_PATH);
@@ -22,7 +22,6 @@ foreach($files as $file){
 }
 
 $totals = calculateTotals($transactions);
-// print_r(value: $transactions);
 require VIEWS_PATH . 'transactions.php';
 
 ?>

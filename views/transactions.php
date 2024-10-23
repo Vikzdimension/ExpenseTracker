@@ -51,10 +51,10 @@
             <?php if(!empty($transactions)) : ?>
             <?php foreach($transactions as $transaction): ?>
             <tr>
-                <td><?= $transaction['date'] ?></td>
-                <td><?= $transaction['checkNumber'] ?></td>
-                <td><?= $transaction['description'] ?></td>
-                <td><?= $transaction['amount'] ?></td>
+                <td><?= $transaction['date']; ?></td>
+                <td><?= $transaction['checkNumber']; ?></td>
+                <td><?= $transaction['description']; ?></td>
+                <td><?= formatDollerAmount($transaction['amount']); ?></td>
             </tr>
             <?php endforeach ?>
             <?php endif ?>
@@ -62,19 +62,17 @@
         <tfoot>
             <tr>
                 <th colspan="3">Total Income:</th>
-                    <td><?= $totals['totalIncome']; ?></td>
+                    <td><?= formatDollerAmount($totals['totalIncome']); ?></td>
             </tr>
             <tr>
                 <th colspan="3">Total Expense:</th>
-                    <td><?= $totals['totalExpense']; ?></td>
+                    <td><?= formatDollerAmount($totals['totalExpense']); ?></td>
             </tr>
             <tr>
                 <th colspan="3">Net Income:</th>
-                    <td><?= $totals['netTotal']; ?></td>
+                    <td><?= formatDollerAmount($totals['netTotal']); ?></td>
             </tr>                        
         </tfoot>
         </table>
-
-
     </body>
 </html>

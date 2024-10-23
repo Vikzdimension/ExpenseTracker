@@ -1,10 +1,7 @@
 <?php
 
 declare(strict_types = 1);
-function pre($value){
-    echo "<pre>";
-    echo '<br>';
-    print_r($value);
-    echo '</br>';
-    echo "<pre>";
+function formatDollerAmount(float $amount) : string {
+$isNegative = $amount < 0;
+return ($isNegative ? '-': ''). '$'. number_format(abs($amount), 2);
 }
